@@ -74,17 +74,23 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Deployment on Railway
 
-1. Create a new Railway project
-2. Add a PostgreSQL service
-3. Add your web service (connect to GitHub or use Railway CLI)
-4. Set environment variables:
-   - `DATABASE_URL` (from PostgreSQL service)
-   - `AUTH_SECRET` (generate a random string)
-   - `NEXTAUTH_URL` (your Railway domain)
-   - `OPENAI_API_KEY` (your OpenAI key)
-5. Deploy!
+See **[RAILWAY_DEPLOYMENT.md](./RAILWAY_DEPLOYMENT.md)** for complete deployment instructions.
 
-Railway will automatically detect the Dockerfile and deploy your app.
+**Quick steps:**
+1. Create a new Railway project and connect your GitHub repo
+2. Add a PostgreSQL service
+3. Set environment variables (see RAILWAY_DEPLOYMENT.md)
+4. Deploy! Railway auto-detects Next.js projects
+
+**Important:** After first deployment, run database migrations:
+```bash
+railway run npx prisma db push
+```
+
+For your Railway URL `katekaiwebsitecreator-production.up.railway.app`, set:
+```
+NEXTAUTH_URL=https://katekaiwebsitecreator-production.up.railway.app
+```
 
 ## Project Structure
 
@@ -132,5 +138,12 @@ All AI output is validated against JSON schemas to ensure consistency.
 
 ## License
 
+## License
+
 MIT
-# Katek_AI_Website_Creator
+
+---
+
+# Katek AI Website Creator
+
+Production deployment: [katekaiwebsitecreator-production.up.railway.app](https://katekaiwebsitecreator-production.up.railway.app)
